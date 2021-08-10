@@ -1,9 +1,29 @@
 {
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "husky": "^7.0.1",
     "jest": "^27.0.6"
-  }, 
+  },
   "scripts": {
-    "test": "jest",
+    "lint": "eslint .",
+    "prepush": "yarn run lint && yarn test",
+    "test": "jest --coverage",
     "watch": "jest --watch *.js"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
   }
 }
