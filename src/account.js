@@ -1,7 +1,9 @@
-// function Account(openingBalance = 0) {
-//   this.openingBalance = openingBalance;
-// }
+class Account {
+  constructor(openingBalance = 0) {
+    this.openingBalance = openingBalance;
+  }
+}
 
 
 
-// module.exports = Account;
+module.exports = Account;

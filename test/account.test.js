@@ -1,7 +1,6 @@
-// const Account = require('../src/account');
+const Account = require('../src/account');
 
-
-// test( 'opening balance is zero', () => {
-//   let account = new Account()
-//   // expect(account.openingBalance(openingBalance)).toBe(0);
-// }) 
+test( 'opening balance is zero', () => {
+  const account = new Account()
+  expect(account.openingBalance).toBe(0);
+}) 
