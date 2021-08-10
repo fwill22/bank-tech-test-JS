@@ -1,4 +1,4 @@
-# Bank Technical Test
+# Bank Technical Test in Javascript
 
 [gif]
 ## Overview
