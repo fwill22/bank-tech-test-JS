@@ -162,14 +162,14 @@ Class  | Transaction |
 </details>
 <br>
 
-## Dependecies
+## Dependencies
 * JavaScript
 * Node
 * Jest
 * ESLint
 * Husky
 
-### Requirements
+## Requirements
 You should be able to interact with your code via the JavaScript console.
 Deposits, withdrawal.
 Account statement (date, amount, balance) printing.
@@ -186,3 +186,6 @@ When she prints her bank statement she would see:
 |  13/01/2012 || 2000.00  ||         || 3000.00  |
 |  10/01/2012 || 1000.00  ||         || 1000.00  |
 ```
+---------------------------
+## Ruby Version
+I have also written this project in Ruby - you can find the repo [here](https://github.com/fwill22/bank-tech-test-ruby).
