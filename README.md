@@ -13,7 +13,7 @@ Program allows user to manage finances through a simple command line interface.
 ## Setup 
 ```
 $ git clone git@github.com:fwill22/bank-tech-test-JS.git
-$ cd JS-Bank-Tech-Test
+$ cd bank-tech-test-JS
 $ yarn install
 $ node
 ```
@@ -21,7 +21,12 @@ $ node
 ## How to use
 In REPL:
 ```
->
+> let connection = require('./src/account')
+> let account = new connection
+> account.deposit(1000.75)
+> account.withdraw(800)
+> account.balance()
+> account.viewStatement()
 
 ```
 
@@ -31,9 +36,11 @@ In REPL:
 yarn test
 ```
 <details>
-<summary> Jest Results - (to be added) </summary>
+<summary> Jest Results </summary>
 <br>
-<img src="">
+
+![](public/images/jestBankTest.png)
+
 </details>
 <br>
 
@@ -41,11 +48,6 @@ yarn test
 ```
 yarn lint
 ```
-<details>
-<summary> ESLint Results - (to be added) </summary>
-<br>
-<img src="">
-</details>
 <br>
 
 ## Planning and Approach: 
