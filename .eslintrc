@@ -5,7 +5,10 @@
     "jest": true,
     "node": true
   },
-  "extends": [
+    "plugins": ["jest"], 
+  
+    "extends": [
     "eslint:recommended"
   ]
+
 }
