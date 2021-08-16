@@ -1,36 +1,36 @@
 class Statement {
   
-  // PSEUDOCODE:
-
-  formatAmount = (transaction) => {
-    if (transaction.amount === 0)
-    // print BLANK SPACE
-    else if (transaction.amount < 0) {
-
-    // remove minus symbol and format with .toFixed(2)
-    // ||  || transaction amount without - .toFixed(2) ||
-  } else {
-  // format with .toFixed(2)
-  //}
-}
-
-  formatBalance = (transaction) => {
-    add decimals and || ||
+  printStatement = (transactionHistory) => {
+    console.log(header() + formatStatement(transactionHistory))
   }
 
-  formatStatement (transactionHistory) => {
-    map.reverse through transactionHistory and apply below formatting: 
-    "`${Date}` +  this.formatAmount(transaction) + this.formatBalance(transaction) + \n"
+  formatStatement = (transactionHistory) => {
+    // transactionHistory.map.reverse |transaction| formatTransaction(transaction)
+
+    // through transactionHistory and apply formatTransaction(transactionHistory):
+  }
+
+  formatTransaction = (transaction) => {
+    if (transaction.amount < 0) {
+      _debitTransaction()
+    } else {
+      _creditTransaction()
+    }
   }
 
   header = () => {
     return "|    date    ||  credit  ||  debit  || balance  |"
   }
 
-  printStatement = (transactionHistory) => {
-    console.log(header + formatStatement(transactionHistory))
+  _creditTransaction = (transaction) => {
+    return `| ${transaction.date} ||  || ${transaction.amount.toFixed(2)} || ${transaction.currentBalance.toFixed(2)} |`
   }
-  
+
+  _debitTransaction = (transaction) => {
+    let absoluteAmount = Math.abs(transaction.amount)
+    return `| ${transaction.date} || ${absoluteAmount.to(2)} ||  || ${transaction.currentBalance.toFixed(2)} |`
+  }
+
 }
 
 module.exports = Statement;
