@@ -80,4 +80,12 @@ describe( '#withdraw', () => {
       account.withdraw(-20)
     }).toThrow('Invalid amount: unable to deposit negative sum')
   })
+
+  describe( '#viewStatement', () => {
+    test( 'can print transaction history as a formatted statement', () => {
+      account.deposit(100)
+      account.withdraw(80)
+      expect(account.viewStatement(account.transactionHistory)).toEqual( `|    date    ||  credit  ||  debit  || balance  |\n| ${new Date().toLocaleDateString()} ||  || 80.00 || 20.00 |\n| ${new Date().toLocaleDateString()} || 100.00 ||  || 100.00 |`)
+    })
+  })
 })

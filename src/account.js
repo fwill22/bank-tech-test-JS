@@ -1,4 +1,5 @@
-const Transaction = require('../src/transaction')
+const Transaction = require('./transaction')
+const Statement = require('./statement')
 
 class Account {
   constructor(openingBalance = 0, overdraftLimit = 200) {
@@ -16,6 +17,11 @@ class Account {
     this._withdrawalValidations(amount)
     let withdrawal = - amount
     return this.transactionHistory.push(new Transaction(- amount, this.balance() - amount))
+  }
+
+  viewStatement = (transactionHistory) => {
+    let statement = new Statement
+    return statement.printStatement(transactionHistory)
   }
 
   balance = () => {
