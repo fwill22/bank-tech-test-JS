@@ -9,6 +9,9 @@ class Account {
   }
 
   withdraw = (amount) => {
+    if(amount > this.balance()) {
+      throw new Error ('Insufficient Funds')
+    }
     let withdrawal = - amount
     return this.transactionHistory.push(withdrawal)
   }
