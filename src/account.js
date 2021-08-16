@@ -1,3 +1,5 @@
+const Transaction = require('../src/transaction')
+
 class Account {
   constructor(openingBalance = 0, overdraftLimit = 200) {
     this.openingBalance = openingBalance;
@@ -12,7 +14,7 @@ class Account {
     else if (amount < 0) {
       throw new Error ('Invalid amount: unable to deposit negative sum')
     }
-    return this.transactionHistory.push(amount)
+    return this.transactionHistory.push(new Transaction(amount, amount + this.balance()))
   }
 
   withdraw = (amount) => {
@@ -26,11 +28,11 @@ class Account {
       throw new Error ('Insufficient Funds')
     }
     let withdrawal = - amount
-    return this.transactionHistory.push(withdrawal)
+    return this.transactionHistory.push(new Transaction(- amount, this.balance() - amount))
   }
 
   balance = () => {
-    return this.transactionHistory.reduce((a,b) => a + b, 0)
+    return this.transactionHistory.map(transaction => transaction.amount).reduce((a,b) => a + b, 0)
   }
 }
 

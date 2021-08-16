@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 const Account = require('../src/account');
+const Transaction = require('../src/transaction')
 
 beforeEach(function() {
   account = new Account()
@@ -10,10 +11,10 @@ describe( 'Account', () => {
     expect(account.openingBalance).toBe(0);
   }) 
 
-  test( 'stores transactions in transaction history', () => {
+  test( 'stores transaction objects in transaction history', () => {
     account.deposit(100)
     account.withdraw(80)
-    expect(account.transactionHistory).toContain(100, -80)
+    expect(account.transactionHistory[1].currentBalance).toBe(20)
   })
 
   test( 'has an overdraft limit of £200', () => {
