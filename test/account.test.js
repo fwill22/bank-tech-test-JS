@@ -5,14 +5,22 @@ beforeEach(function() {
   account = new Account()
 })
 
-test( 'opening balance is zero', () => {
-  expect(account.openingBalance).toBe(0);
-}) 
+describe( 'Account', () => {
+  test( 'opening balance is zero', () => {
+    expect(account.openingBalance).toBe(0);
+  }) 
 
-test( 'transactions can be saved to transaction history record', () => {
-  account.deposit(100)
-  account.withdraw(80)
-  expect(account.transactionHistory).toContain(100, -80)
+  test( 'stores transactions in transaction history', () => {
+    account.deposit(100)
+    account.withdraw(80)
+    expect(account.transactionHistory).toContain(100, -80)
+  })
+
+  test( 'has an overdraft limit of £200', () => {
+    account.deposit(200)
+    account.withdraw(350)
+    expect(account.balance()).toEqual(-150)
+  })
 })
 
 describe( '#deposit', () => {
@@ -52,10 +60,10 @@ describe( '#withdraw', () => {
     expect(account.balance()).toEqual(50.25)
   })
 
-  test( 'cannot withdraw if amount greater than balance', () => {
+  test( 'cannot withdraw if amount greater than overdraft limit', () => {
     account.deposit(100)
     expect(() => {
-      account.withdraw(120)
+      account.withdraw(301)
     }).toThrow('Insufficient Funds')
   })
 

@@ -1,6 +1,7 @@
 class Account {
-  constructor(openingBalance = 0) {
+  constructor(openingBalance = 0, overdraftLimit = 200) {
     this.openingBalance = openingBalance;
+    this.overdraftLimit = overdraftLimit
     this.transactionHistory = []
   }
 
@@ -21,7 +22,7 @@ class Account {
     else if (amount < 0) {
       throw new Error ('Invalid amount: unable to deposit negative sum')
     }
-    else if (amount > this.balance()) {
+    else if (amount > this.balance() + this.overdraftLimit) {
       throw new Error ('Insufficient Funds')
     }
     let withdrawal = - amount
