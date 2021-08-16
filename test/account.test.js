@@ -46,10 +46,30 @@ describe( '#withdraw', () => {
     expect(account.balance()).toEqual(200)
   })
 
+  test( 'can withdraw floats', () => {
+    account.deposit(100.50)
+    account.withdraw(50.25)
+    expect(account.balance()).toEqual(50.25)
+  })
+
   test( 'cannot withdraw if amount greater than balance', () => {
     account.deposit(100)
     expect(() => {
       account.withdraw(120)
     }).toThrow('Insufficient Funds')
+  })
+
+  test( 'cannot withdraw invalid data type', () => {
+    account.deposit(100)
+    expect(() => {
+      account.withdraw('money')
+    }).toThrow('Invalid Data Type: Please enter an integer')
+  })
+
+  test( 'cannot withdraw negative amount', () => {
+    account.deposit(100)
+    expect(() => {
+      account.withdraw(-20)
+    }).toThrow('Invalid amount: unable to deposit negative sum')
   })
 })

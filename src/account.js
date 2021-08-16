@@ -15,7 +15,13 @@ class Account {
   }
 
   withdraw = (amount) => {
-    if (amount > this.balance()) {
+    if (isNaN(amount) === true) {
+      throw new Error ('Invalid Data Type: Please enter an integer')
+    }
+    else if (amount < 0) {
+      throw new Error ('Invalid amount: unable to deposit negative sum')
+    }
+    else if (amount > this.balance()) {
       throw new Error ('Insufficient Funds')
     }
     let withdrawal = - amount
