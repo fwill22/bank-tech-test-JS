@@ -1,6 +1,6 @@
 # Bank Technical Test in Javascript
+![CommandLineGif](public/images/BankTech.gif)
 
-[gif]
 ## Overview
 Solo project to solve a technical challenge with a focus on clean well crafted code. 
 Program allows user to manage finances through a simple command line interface. 
