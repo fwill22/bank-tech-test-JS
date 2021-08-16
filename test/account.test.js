@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 const Account = require('../src/account');
-const Transaction = require('../src/transaction')
 
 beforeEach(function() {
   account = new Account()
