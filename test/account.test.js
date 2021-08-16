@@ -20,6 +20,23 @@ describe( '#deposit', () => {
     account.deposit(100)
     expect(account.balance()).toEqual(100)
   })
+
+  test( 'can deposit floats', () => {
+    account.deposit(100.50)
+    expect(account.balance()).toEqual(100.50)
+  })
+
+  test( 'cannot desposit invalid data type', () => {
+    expect(() => {
+      account.deposit('money')
+    }).toThrow('Invalid Data Type: Please enter an integer')
+  })
+
+  test( 'cannot deposit negative amount', () => {
+    expect(() => {
+      account.deposit(-20)
+    }).toThrow('Invalid amount: unable to deposit negative sum')
+  })
 })
 
 describe( '#withdraw', () => {
