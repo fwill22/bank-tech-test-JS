@@ -1,7 +1,7 @@
 class Statement {
   
   printStatement = (transactionHistory) => {
-    console.log(this.header() + this.formatStatement(transactionHistory).join('\n'))
+    return this.header() + this.formatStatement(transactionHistory).reverse().join('\n')
   }
 
   formatStatement = (transactionHistory) => {
@@ -10,9 +10,9 @@ class Statement {
 
   formatTransaction = (transaction) => {
     if (transaction.amount < 0) {
-      this._debitTransaction(transaction)
+      return this._debitTransaction(transaction)
     } else {
-      this._creditTransaction(transaction)
+      return this._creditTransaction(transaction)
     }
   }
 
@@ -21,14 +21,13 @@ class Statement {
   }
 
   _creditTransaction = (transaction) => {
-    return `| ${transaction.date} ||  || ${transaction.amount.toFixed(2)} || ${transaction.currentBalance.toFixed(2)} |\n`
+    return `| ${transaction.date} || ${transaction.amount.toFixed(2)} ||  || ${transaction.currentBalance.toFixed(2)} |`
   }
 
   _debitTransaction = (transaction) => {
     let absoluteAmount = Math.abs(transaction.amount)
-    return `| ${transaction.date} || ${absoluteAmount.to(2)} ||  || ${transaction.currentBalance.toFixed(2)} |\n`
+    return `| ${transaction.date} ||  || ${absoluteAmount.toFixed(2)} || ${transaction.currentBalance.toFixed(2)} |`
   }
-
 }
 
 module.exports = Statement;
