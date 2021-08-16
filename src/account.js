@@ -19,9 +19,11 @@ class Account {
     return this.transactionHistory.push(new Transaction(- amount, this.balance() - amount))
   }
 
-  viewStatement = (transactionHistory) => {
+  viewStatement = () => {
     let statement = new Statement
-    return statement.printStatement(transactionHistory)
+    let printout = statement.printStatement(this.transactionHistory)
+    console.log(printout)
+    return printout
   }
 
   balance = () => {
